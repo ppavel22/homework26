@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Darwin
 print("-------------Task1-------------")
 func swapArray<Item>(mass: [Item]) -> [Item] {
     guard mass.isEmpty == false else {
@@ -33,13 +34,19 @@ print(mass2)
 print("-------------Task2-------------")
 func isSymmetric<Item>(mass: [Item]) -> Bool
     where  Item: Equatable {
-        var result = false
+        var result = true
+        var counter1 = 0
+        var counter2 = mass.count - 1
         for _ in 0...mass.count {
-            var counter1 = 0
-            var counter2 = mass.count - 1
-            result = mass[counter1] == mass[counter2]
-            counter1 += 1
-            counter2 -= 1
+            if result == false {
+                break
+            } else {
+                result = mass[counter1] == mass[abs(counter2)]
+                
+                counter1 += 1
+                counter2  -= 1
+            }
+            guard counter1 < mass.count - 1  else { break }
         }
         return result
 }
