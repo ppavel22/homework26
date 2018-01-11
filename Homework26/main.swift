@@ -10,16 +10,11 @@ import Foundation
 import Darwin
 print("-------------Task1-------------")
 func swapArray<Item>(mass: [Item]) -> [Item] {
-    guard mass.isEmpty == false else {
-        return mass
-    }
+    guard !mass.isEmpty else { return mass }
     var newMass : [Item] = mass
-    let temp: Item?
-    temp = newMass[0]
-    
-    guard let a = temp else {fatalError()}
+    let temp: Item = newMass[0]
     newMass[0] = newMass[newMass.count - 1]
-    newMass[newMass.count - 1] = a
+    newMass[newMass.count - 1] = temp
     return newMass
 }
 var qwe : [Int] = []
